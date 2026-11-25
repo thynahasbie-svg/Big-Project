@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Buku Tugas{% endblock %}
+
+{% block content %}
+<header class="hero">
+  <h1>Buku Tugas</h1>
+  <p>
+    {% if total == 0 %}Belum ada tugas yang dicatat.
+    {% elif sisa == 0 %}Semua tugas sudah selesai.
+    {% else %}Ada {{ sisa }} tugas yang belum selesai{% if terlambat %}, {{ terlambat }} sudah lewat tenggat{% endif %}.{% endif %}
+  </p>
+</header>
+
+{% with pesan = get_flashed_messages(with_categories=true) %}
+  {% for kategori, isi in pesan %}
+    <p class="flash {{ kategori }}">{{ isi }}</p>
+  {% endfor %}
+{% endwith %}
+
+<section class="panel">
+  <h2>Tambah tugas</h2>
+  <form method="post" action="{{ url_for('tugas_tambah') }}" class="grid">
+    <label>Judul tugas<input name="judul" required></label>
+    <label>Mata pelajaran<input name="mata_pelajaran" required></label>
+    <label>Tenggat<input type="date" name="tenggat" required></label>
+    <label>Status
+      <select name="status">{% for s in status_list %}<option>{{ s }}</option>{% endfor %}</select>
+    </label>
+    <label class="full">Catatan<textarea name="deskripsi" rows="2"></textarea></label>
+    <button class="full primary">Simpan tugas</button>
+  </form>
+</section>
+
+<section>
+  <div class="bar">
+    <h2>Daftar tugas ({{ daftar|length }})</h2>
+    <nav class="filter">
+      <a href="{{ url_for('tugas') }}" class="{{ '' if filter_status else 'on' }}">Semua</a>
+      {% for s in status_list %}
+        <a href="{{ url_for('tugas', status=s) }}" class="{{ 'on' if filter_status == s else '' }}">{{ s }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+
+  {% if not daftar %}
+    <p class="empty">Belum ada tugas di sini. Isi formulir di atas untuk menambahkan yang pertama.</p>
+  {% endif %}
+
+  <ul class="list">
+  {% for t in daftar %}
+    <li class="item {{ 'done' if t.status == 'Selesai' }}" style="--h: {{ t.mata_pelajaran|hue }}">
+      <div>
+        <span class="mapel">{{ t.mata_pelajaran }}</span>
+        <strong>{{ t.judul }}</strong>
+        {% if t.deskripsi %}<p>{{ t.deskripsi }}</p>{% endif %}
+      </div>
+      <div class="meta">
+        <span class="due {{ 'late' if t.tenggat < hari_ini and t.status != 'Selesai' }}">Tenggat {{ t.tenggat }}</span>
+        <span class="badge st-{{ t.status|lower|replace(' ', '-') }}">{{ t.status }}</span>
+        <a class="btn" href="{{ url_for('tugas_edit', id=t.id) }}">Edit</a>
+        <form method="post" action="{{ url_for('tugas_hapus', id=t.id) }}" onsubmit="return confirm('Hapus tugas ini?')">
+          <button class="btn danger">Hapus</button>
+        </form>
+      </div>
+    </li>
+  {% endfor %}
+  </ul>
+</section>
+{% endblock %}

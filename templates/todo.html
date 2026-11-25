@@ -1,0 +1,62 @@
+
+{% extends "base.html" %}
+
+{% block title %}To Do List App{% endblock %}
+
+{% block content %}
+
+<div class="todo-container">
+
+    <h3>TO DO LIST APP</h3>
+
+    <!-- Form Tambah atau Edit Kegiatan -->
+    {% if edit_index is not none %}
+    <form method="POST" action="{{ url_for('todo_edit', index=edit_index) }}">
+        <input
+            type="text"
+            name="item"
+            value="{{ edit_value }}"
+            placeholder="Edit kegiatan..."
+            required
+        >
+        <button type="submit">Simpan</button>
+        <a href="{{ url_for('todo') }}">Batal</a>
+    </form>
+
+    {% else %}
+    <form method="POST" action="{{ url_for('todo') }}">
+        <input
+            type="text"
+            name="item"
+            placeholder="Tulis kegiatan/to do..."
+            required
+        >
+        <button type="submit">Tambah</button>
+    </form>
+    {% endif %}
+
+    <!-- Daftar Kegiatan -->
+    <ul>
+        {% for t in todos %}
+        <li>
+            <span>{{ t }}</span>
+
+            <div class="todo-actions">
+                <a href="{{ url_for('todo_edit', index=loop.index0) }}">
+                    Edit
+                </a>
+
+                <form method="POST" action="{{ url_for('todo_hapus', index=loop.index0) }}">
+                    <button type="submit">Hapus</button>
+                </form>
+            </div>
+        </li>
+
+        {% else %}
+        <li>Belum ada kegiatan.</li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Project{% endblock %}
+{% block content %}
+
+    <header class="project-header">
+        <h1>Reminder Assesment</h1>
+        <p>Aplikasi Pengingat Pengumpulan Tugas.</p>
+    </header>
+    
+    <main class="project-gallery">
+        <div class="project-card">
+            <img src="{{ url_for('static', filename='images/project.png') }}" alt="">
+            <div class="project-content">
+                <h2>Clock</h2>
+                <p>Aplikasi untuk mengatur waktu</p>
+                <a href="{{ url_for('waktu') }}">View Project</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <img src="{{ url_for('static', filename='images/project.png') }}" alt="">
+            <div class="project-content">
+                <h2>Mapel Pelajaran</h2>
+                <p>Aplikasi untuk mencatat daftar mata pelajaran dan nilai/catatan.</p>
+                <a href="{{ url_for('mapel') }}">View Project</a>
+            </div>
+        </div>
+        
+        <div class="project-card">
+            <img src="{{ url_for('static', filename='images/project.png') }}" alt="">
+            <div class="project-content">
+                <h2>To do App</h2>
+                <p>Aplikasi sederhana untuk mencatat dan mengelola aktivitas sehari-hari.</p>
+                <a href="{{ url_for('todo') }}">View Project</a>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
