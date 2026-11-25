@@ -1,0 +1,444 @@
+
+/* =====================================
+   1. PENGATURAN DASAR WEBSITE
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(199, 164, 47);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 20px;
+    color: rgb(17, 29, 58);
+}
+
+h1 {
+    color: rgb(17, 29, 58);
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* =====================================
+   2. NAVIGASI
+===================================== */
+
+nav {
+    background-color: rgb(233, 195, 148);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-radius: 8px;
+}
+
+nav a {
+    text-decoration: none;
+    color: rgb(14, 10, 1);
+    font-weight: bold;
+    font-size: large;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: rgb(180, 90, 0);
+}
+
+
+/* =====================================
+   3. GAMBAR
+===================================== */
+
+img {
+    border-radius: 10%;
+    border: 3px solid rgb(17, 29, 58);
+    width: 250px;
+    max-width: 100%;
+}
+
+
+/* =====================================
+   4. FORM UMUM
+===================================== */
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+}
+
+input,
+select,
+textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+
+/* =====================================
+   5. BUTTON
+===================================== */
+
+button {
+    background: rgb(7, 112, 7);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+
+/* =====================================
+   6. PROJECT GALLERY
+===================================== */
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, 0.1);
+}
+
+.project-header {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.project-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border: none;
+    border-radius: 0;
+}
+
+.project-content {
+    padding: 20px;
+}
+
+.project-content button {
+    margin-top: 5px;
+}
+
+
+/* =====================================
+   7. FINANCE APP
+===================================== */
+
+.finance-container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+}
+
+.finance-container form {
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.finance-container input,
+.finance-container select {
+    width: 100%;
+    margin: 8px 0;
+}
+
+.finance-container table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.finance-container th,
+.finance-container td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.finance-container th {
+    background-color: rgb(233, 195, 148);
+}
+
+.finance-container .saldo {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(7, 112, 7);
+}
+
+
+/* =====================================
+   8. TO DO LIST APP
+===================================== */
+
+.todo-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.todo-container h1,
+.todo-container h3 {
+    text-align: center;
+    color: rgb(17, 29, 58);
+}
+
+.todo-container > form {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.todo-container input {
+    flex: 1;
+    min-width: 150px;
+}
+
+.todo-container ul {
+    padding: 0;
+    list-style: none;
+}
+
+.todo-container li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: rgb(245, 245, 240);
+    border-radius: 6px;
+}
+
+.todo-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.todo-actions form {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    max-width: none;
+}
+
+.todo-actions a {
+    color: rgb(7, 112, 7);
+    font-weight: bold;
+}
+
+.todo-actions button {
+    background-color: #d9534f;
+    padding: 8px 12px;
+}
+
+
+/* =====================================
+   9. CLOCK & TIMER APP
+===================================== */
+
+.clock-container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
+}
+
+.clock-container h1 {
+    color: rgb(17, 29, 58);
+}
+
+.clock-section,
+.timer-section {
+    padding: 20px;
+}
+
+.digital-clock {
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(204, 111, 0);
+    margin: 20px;
+}
+
+#clock-date {
+    color: #666;
+}
+
+.timer-input {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.timer-input div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.timer-input input {
+    width: 85px;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.timer-display {
+    font-size: 55px;
+    font-weight: bold;
+    color: rgb(204, 111, 0);
+    margin: 25px;
+}
+
+#timer-status {
+    color: #555;
+    margin: 15px;
+}
+
+.timer-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.timer-buttons button {
+    padding: 12px 18px;
+    background-color: rgb(7, 112, 7);
+}
+
+#pause-btn {
+    background-color: #d99a22;
+}
+
+#edit-btn {
+    background-color: #2878a5;
+}
+
+#delete-btn {
+    background-color: #d9534f;
+}
+
+
+/* =====================================
+   10. RESPONSIVE DESIGN
+===================================== */
+
+/* DESKTOP */
+
+@media (min-width: 801px) {
+
+    .project-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+/* TABLET */
+
+@media (min-width: 601px) and (max-width: 800px) {
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: medium;
+    }
+
+    .project-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* HP / MOBILE */
+
+@media (max-width: 600px) {
+
+    body {
+        margin: 10px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    nav a {
+        margin: 0;
+        font-size: medium;
+    }
+
+    .project-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        text-align: center;
+    }
+
+    .todo-container,
+    .clock-container,
+    .finance-container {
+        padding: 15px;
+    }
+
+    .todo-container li {
+        flex-wrap: wrap;
+    }
+
+    .digital-clock {
+        font-size: 35px;
+    }
+
+    .timer-display {
+        font-size: 40px;
+    }
+
+    .timer-buttons button {
+        padding: 10px 12px;
+    }
+
+    .finance-container {
+        overflow-x: auto;
+    }
+
+}
